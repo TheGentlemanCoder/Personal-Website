@@ -7,16 +7,18 @@ function App() {
 
   function checkNewline(e) {
       if (e.key === 'Enter') {
-        checkCommand(text); // see if the user has entered a valid command
         lines.push(text); // add another line
         setLines(lines);
+        checkCommand(text); // see if the user has entered a valid command
         setText(''); // clear next line
       }
   }
 
   function checkCommand(command) {
       if (command === "exit") {
-          window.location.href = "https://www.youtube.com/watch?v=a3Z7zEc7AXQ"; // hehe
+        window.location.href = "https://www.youtube.com/watch?v=a3Z7zEc7AXQ"; // hehe
+      } else if (command === "clear") {
+        setLines([]);
       }
   }
 
