@@ -6,6 +6,9 @@ module.exports = {
     extend: {
         fontFamily: {
             sans: ['Terminal', 'monospace']
+        },
+        colors: {
+            primary: '#F3F4F6'
         }
     },
   },
