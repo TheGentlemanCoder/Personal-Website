@@ -16,7 +16,7 @@ function App() {
 
   function checkCommand(command) {
       if (command === "exit") {
-          window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+          window.location.href = "https://www.youtube.com/watch?v=a3Z7zEc7AXQ"; // hehe
       }
   }
 
