@@ -7,6 +7,7 @@ function App() {
     const [lines, setLines] = React.useState([]);
     const [commandHistory, setCommandHistory] = React.useState([]);
     const [commandHistoryPointer, setCommandHistoryPointer] = React.useState(0);
+    const [displayingPhoto, setDisplayingPhoto] = React.useState(false);
 
     function checkKeystroke(e) {
         if (e.key === 'Enter') {
@@ -50,6 +51,7 @@ function App() {
             case "clear":
                 setLines([]); // clear the screen
                 setCommandHistory([]); // clear command history
+                setDisplayingPhoto(false);
                 break;
             case "help":
             case "?":
@@ -57,30 +59,51 @@ function App() {
                 lines.push(["clear        Clear the screen and command history", false]);
                 lines.push(["exit         Leave the terminal and go... somewhere else", false]);
                 lines.push(["whoami       Display critical information about the author", false]);
+                setDisplayingPhoto(false);
                 break;
             case "whoami":
                 console.log(whoami);
                 whoami.map(line => lines.push(line)); // output prepared bio
+                setDisplayingPhoto(true);
                 break;
             default:
                 lines.push(["Unrecognized command: \"" + text + "\".", false]); // false means to display caret
                 lines.push(["Try \"help\" or \"?\" for available options.", false]);
                 setLines(lines);
+                setDisplayingPhoto(false);
                 break;
         }
     }
 
-    return (
-        <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
-            <PreviousLines lines={lines}/>
-            <span>$ </span>
-            <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
-                   value={text} onChange={(e) => setText(e.target.value)} onKeyPress={(e) => checkKeystroke(e)}
-                   onKeyDown={(e) => checkArrowKey(e)} style={{width: `${text.length === 0 ? 1 : text.length}ch`}}
-                   type="text" className="bg-black m-0 border-0 terminal-input"></input>
-            <span className="animate-ping rounded-full text-primary">&#x0008;</span>
-        </div>
-    );
+    if (displayingPhoto) {
+        return (
+            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
+                <div className="object-cover absolute w-1/2 top-0 right-0">
+                    <img src="/whoami.jpg"></img>
+                </div>
+                <PreviousLines lines={lines}/>
+                <span>$ </span>
+                <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
+                       value={text} onChange={(e) => setText(e.target.value)} onKeyPress={(e) => checkKeystroke(e)}
+                       onKeyDown={(e) => checkArrowKey(e)} style={{width: `${text.length === 0 ? 1 : text.length}ch`}}
+                       type="text" className="bg-black m-0 border-0 terminal-input"></input>
+                <span className="animate-ping rounded-full text-primary">&#x0008;</span>
+            </div>
+        );
+    } else {
+        // displayingPhoto == false
+        return (
+            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
+                <PreviousLines lines={lines}/>
+                <span>$ </span>
+                <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
+                       value={text} onChange={(e) => setText(e.target.value)} onKeyPress={(e) => checkKeystroke(e)}
+                       onKeyDown={(e) => checkArrowKey(e)} style={{width: `${text.length === 0 ? 1 : text.length}ch`}}
+                       type="text" className="bg-black m-0 border-0 terminal-input"></input>
+                <span className="animate-ping rounded-full text-primary">&#x0008;</span>
+            </div>
+        );
+    }
 }
 
 function PreviousLines(props) {
