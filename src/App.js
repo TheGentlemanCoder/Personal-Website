@@ -31,7 +31,7 @@ function App() {
                 setText(commandHistory[commandHistoryPointer - 1]);
             }
         } else if (e.key === "ArrowDown") {
-            if (commandHistoryPointer == commandHistory.length - 1) {
+            if (commandHistoryPointer === commandHistory.length - 1) {
                 // bring back a blank prompt
                 setCommandHistoryPointer(commandHistoryPointer + 1);
                 setText('');
@@ -82,7 +82,10 @@ function App() {
     if (displayingPhoto) {
         return (
             <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
-                <img src="/whoami.jpg" className="object-cover absolute w-1/2 top-0 right-0 transition-opacity duration-1000 opacity-0 hover:opacity-100 ease-out"></img>
+                <img src="/whoami.jpg" alt="The author's handsome mug"
+                     className="object-cover absolute w-1/2 top-0 right-0
+                                transition-opacity duration-1000 opacity-0
+                                hover:opacity-100 ease-out"></img>
                 <PreviousLines lines={lines}/>
                 <span>$ </span>
                 <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
