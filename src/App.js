@@ -78,9 +78,7 @@ function App() {
     if (displayingPhoto) {
         return (
             <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
-                <div className="object-cover absolute w-1/2 top-0 right-0">
-                    <img src="/whoami.jpg"></img>
-                </div>
+                <img src="/whoami.jpg" className="object-cover absolute w-1/2 top-0 right-0 transition-opacity duration-1000 opacity-0 hover:opacity-100 ease-out"></img>
                 <PreviousLines lines={lines}/>
                 <span>$ </span>
                 <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
