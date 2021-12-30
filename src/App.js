@@ -58,8 +58,12 @@ function App() {
                 lines.push(["help (?)     Display this list of available commands", false]);
                 lines.push(["clear        Clear the screen and command history", false]);
                 lines.push(["exit         Leave the terminal and go... somewhere else", false]);
-                lines.push(["whoami       Display critical information about the author", false]);
+                lines.push(["git          Redirects the user to the author's GitHub"]);
+                lines.push(["whoami       Display general information about the author", false]);
                 setDisplayingPhoto(false);
+                break;
+            case "git":
+                window.location.href = "https://github.com/TheGentlemanCoder"; // redirect user to GitHub
                 break;
             case "whoami":
                 console.log(whoami);
