@@ -55,11 +55,11 @@ function App() {
                 break;
             case "help":
             case "?":
-                lines.push(["help (?)     Display this list of available commands", false]);
-                lines.push(["clear        Clear the screen and command history", false]);
-                lines.push(["exit         Leave the terminal and go... somewhere else", false]);
-                lines.push(["git          Redirects the user to the author's GitHub"]);
-                lines.push(["whoami       Display general information about the author", false]);
+                lines.push(["help (?)     Display this list", false]);
+                lines.push(["clear        Clear the screen", false]);
+                lines.push(["exit         Exit where?", false]);
+                lines.push(["git          Author's GitHub"]);
+                lines.push(["whoami       Author's general bio", false]);
                 setDisplayingPhoto(false);
                 break;
             case "git":
