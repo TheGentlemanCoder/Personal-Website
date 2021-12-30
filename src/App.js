@@ -11,7 +11,7 @@ function App() {
 
     function checkKeystroke(e) {
         if (e.key === 'Enter') {
-            lines.push([text, true]); // add another line (true means to display caret)
+            lines.push(["$ " + text, true]); // add another line (true means to display caret)
             setLines(lines);
 
             commandHistory.push(text); // save command
@@ -80,11 +80,11 @@ function App() {
 
     if (displayingPhoto) {
         return (
-            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
+            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary overflow-x-clip overflow-y-scroll">
                 <img src="/whoami.jpg" alt="The author's handsome mug"
                      className="object-cover absolute w-1/2 top-0 right-0
                                 transition-opacity duration-1000 opacity-0
-                                hover:opacity-100 ease-out"></img>
+                                hover:opacity-100 ease-out invisible lg:visible"></img>
                 <PreviousLines lines={lines}/>
                 <span>$ </span>
                 <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
@@ -97,7 +97,7 @@ function App() {
     } else {
         // displayingPhoto == false
         return (
-            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary">
+            <div className="fixed top-0 left-0 h-screen w-screen bg-black text-left text-primary overflow-x-clip overflow-y-scroll">
                 <PreviousLines lines={lines}/>
                 <span>$ </span>
                 <input autoFocus autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" 
@@ -119,10 +119,17 @@ function PreviousLines(props) {
 }
 
 function Line(props) {
+    var div_css_classes = "left-0 max-w-lg text-left bg-black text-primary whitespace-pre-wrap";
+
+    if (props.text[0].length > 0 && props.text[0][0] === "$") {
+        div_css_classes += " m-0"; // command line doesn't need a tab
+    } else {
+        div_css_classes += " ml-4"; // add a tab to distinguish between input and output lines
+    }
+
     return (
-        <div className="left-0 w-screen text-left bg-black text-primary whitespace-pre">
-            <span>{props.text[1] ? "$ " : "  "}</span>
-            <span style={{width: `${props.text[0].length}ch`}} className="m-0 border-0 terminal-input whitespace-pre">{props.text[0]}</span>
+        <div className={div_css_classes}>
+            <span className="m-0 border-0 terminal-input whitespace-pre-wrap">{props.text[0]}</span>
         </div>
     );
 }
