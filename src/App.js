@@ -57,6 +57,7 @@ function App() {
                 lines.push(["clear        Clear the screen and command history", false]);
                 lines.push(["exit         Leave the terminal and go... somewhere else", false]);
                 lines.push(["whoami       Display critical information about the author", false]);
+                break;
             case "whoami":
                 console.log(whoami);
                 whoami.map(line => lines.push(line)); // output prepared bio
