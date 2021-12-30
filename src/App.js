@@ -66,7 +66,6 @@ function App() {
                 window.location.href = "https://github.com/TheGentlemanCoder"; // redirect user to GitHub
                 break;
             case "whoami":
-                console.log(whoami);
                 whoami.map(line => lines.push(line)); // output prepared bio
                 setDisplayingPhoto(true);
                 break;
