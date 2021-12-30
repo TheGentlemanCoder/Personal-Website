@@ -1,0 +1,23 @@
+const whoami = [["Nicholas R. Smith", false],
+                ["", false],
+                ["I'm a senior computer engineering major at Gonzaga University.", false],
+                ["My expected graduation date is May 8th, 2022. My relevant", false],
+                ["internship experience is in embedded firmware QA, penetration", false],
+                ["testing, and social engineering.", false],
+                ["", false],
+                ["I spent most of my time growing up in the Inland Northwest. I", false],
+                ["attained the rank of Eagle Scout in 2018 making bat boxes", false],
+                ["to help balance the ecology of Klemgard Park, WA.", false],
+                ["", false],
+                ["Now, I spend most of my free time either playing my trumpet", false],
+                ["or working on one of my engineering projects - the list seems", false],
+                ["to grow rather than shrink over time.", false],
+                ["", false],
+                ["I like solving problems, and I like proving people wrong about", false],
+                ["what I can do.", false],
+                ["", false],
+                ["\"A bug is never just a mistake. It represents something bigger.", false],
+                ["  An error in thinking that makes you who you are.\"", false],
+                ["    - Elliot, \"Mr. Robot\"", false]]
+
+export default whoami;

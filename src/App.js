@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import whoami from './whoami.js';
 
 function App() {
     const [text, setText] = React.useState('');
@@ -57,7 +58,8 @@ function App() {
                 lines.push(["exit         Leave the terminal and go... somewhere else", false]);
                 lines.push(["whoami       Display critical information about the author", false]);
             case "whoami":
-                console.log("Who am I?");
+                console.log(whoami);
+                whoami.map(line => lines.push(line)); // output prepared bio
                 break;
             default:
                 lines.push(["Unrecognized command: \"" + text + "\".", false]); // false means to display caret
