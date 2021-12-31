@@ -79,11 +79,21 @@ function App() {
                 lines.push(["help (?)     Display this list", false]);
                 lines.push(["clear        Clear the screen", false]);
                 lines.push(["exit         Exit where?", false]);
+                lines.push(["alias        Author contact info."]);
                 lines.push(["cat          List file arg. contents"]);
                 lines.push(["git          Author's GitHub", false]);
                 lines.push(["ls           List files in directory", false]);
                 lines.push(["ps           List of running processes", false]);
                 lines.push(["whoami       Author's general bio", false]);
+                setLines(lines);
+                setDisplayingPhoto(false);
+                break;
+            case "alias":
+                lines.push(["alias email='nicholasrsmith1600@gmail.com'", false]);
+                lines.push(["alias phone='5097157088'", false]);
+                lines.push(["alias github='TheGentlemanCoder'"]);
+                lines.push(["alias linkedin='linkedin.com/nicholas-smith-2022'", false]);
+                lines.push(["alias twitter='@johnDeSilencio'", false]);
                 setLines(lines);
                 setDisplayingPhoto(false);
                 break;
