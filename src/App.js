@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import whoami from './whoami.js';
+import internships from './internships.js';
 
 function App() {
     const [text, setText] = React.useState('');
@@ -58,19 +59,35 @@ function App() {
                 lines.push(["help (?)     Display this list", false]);
                 lines.push(["clear        Clear the screen", false]);
                 lines.push(["exit         Exit where?", false]);
-                lines.push(["git          Author's GitHub"]);
+                lines.push(["cat          List file arg. contents"]);
+                lines.push(["git          Author's GitHub", false]);
+                lines.push(["ls           List files in directory", false]);
                 lines.push(["whoami       Author's general bio", false]);
                 setDisplayingPhoto(false);
                 break;
             case "git":
                 window.location.href = "https://github.com/TheGentlemanCoder"; // redirect user to GitHub
+                setDisplayingPhoto(false);
+                break;
+            case "ls":
+                lines.push(["internship_experience.json", false]);
+                setDisplayingPhoto(false);
+                break;
+            case "cat internship_experience.json":
+                internships.map(line => lines.push(line)); // output prepared resume
+                setDisplayingPhoto(false);
                 break;
             case "whoami":
                 whoami.map(line => lines.push(line)); // output prepared bio
                 setDisplayingPhoto(true);
                 break;
             default:
-                lines.push(["Unrecognized command: \"" + text + "\".", false]); // false means to display caret
+                if (command.length >= 3 && command.slice(0, 3) === "cat") {
+                    lines.push(["Error: No such file as \"" + command.slice(4) + "\"", false]);
+                } else {
+                    lines.push(["Unrecognized command: \"" + text + "\".", false]); // false means to display caret
+                }
+
                 lines.push(["Try \"help\" or \"?\" for available options.", false]);
                 setLines(lines);
                 setDisplayingPhoto(false);
