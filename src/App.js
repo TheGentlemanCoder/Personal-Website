@@ -120,7 +120,7 @@ function App() {
                 lines.push(["    3 tty2 " + time_elapsed_ieee + "\tgu_ieee_prez.sh", false]);
                 lines.push([" 2018 tty3 " + time_elapsed_orientation + "\tearn_degree.dat", false]);
                 setLines(lines);
-                setDisplayingPhoto(true);
+                setDisplayingPhoto(false);
                 break;
             case "whoami":
                 whoami.map(line => lines.push(line)); // output prepared bio
