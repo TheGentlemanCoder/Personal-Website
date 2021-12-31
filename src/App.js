@@ -44,6 +44,26 @@ function App() {
         }
     }
 
+    function getFormattedDateDifference(earlierDate, laterDate) {
+        let difference_s = parseInt((laterDate - earlierDate) / 1000);
+
+        const difference_days = parseInt(difference_s / (60 * 60 * 24));
+        difference_s -= (difference_days * 60 * 60 * 24);
+
+        const difference_hours = parseInt(difference_s / (60 * 60));
+        difference_s -= (difference_hours * 60 * 60);
+
+        const difference_minutes = parseInt(difference_s / (60));
+        difference_s -= (difference_minutes * 60);
+
+        const time_elapsed = difference_days.toString() + "-" +
+            difference_hours.toString() + ":" +
+            difference_minutes.toString() + ":" +
+            difference_s.toString();
+        
+        return time_elapsed;
+    }
+
     function checkCommand(command) {
         switch(command) {
             case "exit":
@@ -62,23 +82,49 @@ function App() {
                 lines.push(["cat          List file arg. contents"]);
                 lines.push(["git          Author's GitHub", false]);
                 lines.push(["ls           List files in directory", false]);
+                lines.push(["ps           List of running processes", false]);
                 lines.push(["whoami       Author's general bio", false]);
+                setLines(lines);
                 setDisplayingPhoto(false);
                 break;
             case "git":
                 window.location.href = "https://github.com/TheGentlemanCoder"; // redirect user to GitHub
+                setLines(lines);
                 setDisplayingPhoto(false);
                 break;
             case "ls":
                 lines.push(["internship_experience.json", false]);
+                setLines(lines);
                 setDisplayingPhoto(false);
                 break;
             case "cat internship_experience.json":
                 internships.map(line => lines.push(line)); // output prepared resume
+                setLines(lines);
                 setDisplayingPhoto(false);
+                break;
+            case "ps":
+                // list some notable "processes"
+                const currentDate = new Date();
+                
+                const orientationDate = new Date("2018-08-24");
+                const time_elapsed_orientation = getFormattedDateDifference(orientationDate, currentDate);
+
+                const eagleScoutAwardDate = new Date("2018-02-22");
+                const time_elapsed_eagle = getFormattedDateDifference(eagleScoutAwardDate, currentDate);
+
+                const presidentGonzagaIEEEDate = new Date("2020-01-01");
+                const time_elapsed_ieee = getFormattedDateDifference(presidentGonzagaIEEEDate, currentDate);
+
+                lines.push(["  PID TTY          TIME CMD", false]);
+                lines.push(["  460 tty1 " + time_elapsed_eagle + "\teagle_scout.py", false]);
+                lines.push(["    3 tty2 " + time_elapsed_ieee + "\tgu_ieee_prez.sh", false]);
+                lines.push([" 2018 tty3 " + time_elapsed_orientation + "\tearn_degree.dat", false]);
+                setLines(lines);
+                setDisplayingPhoto(true);
                 break;
             case "whoami":
                 whoami.map(line => lines.push(line)); // output prepared bio
+                setLines(lines);
                 setDisplayingPhoto(true);
                 break;
             default:
