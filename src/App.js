@@ -164,7 +164,7 @@ function App() {
                        value={text} onChange={(e) => setText(e.target.value)} onKeyPress={(e) => checkKeystroke(e)}
                        onKeyDown={(e) => checkArrowKey(e)} style={{width: `${text.length === 0 ? 1 : text.length}ch`}}
                        type="text" className="bg-black m-0 border-0 terminal-input"></input>
-                <span className="animate-ping rounded-full text-primary">&#x0008;</span>
+                <span className="animate-ping rounded-full text-primary">_</span>
             </div>
         );
     } else {
@@ -177,7 +177,7 @@ function App() {
                        value={text} onChange={(e) => setText(e.target.value)} onKeyPress={(e) => checkKeystroke(e)}
                        onKeyDown={(e) => checkArrowKey(e)} style={{width: `${text.length === 0 ? 1 : text.length}ch`}}
                        type="text" className="bg-black m-0 border-0 terminal-input"></input>
-                <span className="animate-ping rounded-full text-primary">&#x0008;</span>
+                <span className="animate-ping rounded-full text-primary">_</span>
             </div>
         );
     }
@@ -202,7 +202,7 @@ function Line(props) {
 
     return (
         <div className={div_css_classes}>
-            <span className="m-0 border-0 terminal-input whitespace-pre-wrap">{props.text[0]}</span>
+            <span className="m-0 border-0 whitespace-pre-wrap">{props.text[0]}</span>
         </div>
     );
 }
