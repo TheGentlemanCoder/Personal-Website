@@ -67,7 +67,7 @@ function App() {
     function checkCommand(command) {
         switch(command) {
             case "exit":
-                window.location.href = "https://www.youtube.com/watch?v=a3Z7zEc7AXQ"; // hehe
+                window.location.href = "https://www.youtube.com/watch?v=xvFZjo5PgG0"; // hehe
                 break;
             case "clear":
                 setLines([]); // clear the screen
